@@ -79,7 +79,7 @@ namespace quanlythuvien
             string constr = ConfigurationManager.ConnectionStrings["quanlythuvien"].ConnectionString;
             using (SqlConnection cnn = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("select [MaNV],[TenNV],(2018-year([NgaySinh])) as'NgaySinh',[GioiTinh],[DiaChi], [DienThoai],[NgayVaoLam],[Luong],[CMT] from NHANVIEN", cnn))
+                using (SqlCommand cmd = new SqlCommand("select [MaNV],[TenNV],([NgaySinh]) as'NgaySinh',[GioiTinh],[DiaChi], [DienThoai],[NgayVaoLam],[Luong],[CMT] from NHANVIEN", cnn))
                 {
                     cmd.CommandType = CommandType.Text;
                     cnn.Open();
@@ -236,7 +236,6 @@ namespace quanlythuvien
                         txtmanv.Focus();
                     }
                     
-                    cmd.Parameters.AddWithValue("@cmt", txtchungmt.Text);
                     if (kiemtraCMT())
                     {
                         MessageBox.Show("Chứng minh thư của nhân viên đã tồn tại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
