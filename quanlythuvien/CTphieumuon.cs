@@ -87,7 +87,10 @@ namespace quanlythuvien
             DataTable dt = new DataTable();
             da.Fill(dt);
             cbo.DataSource = dt;
-            cbo.DisplayMember = dt.Columns[0].ToString();
+            if (cbo.Name == "cbomasach")
+                cbo.DisplayMember = dt.Columns[1].ToString();
+            else
+                cbo.DisplayMember = dt.Columns[0].ToString();
             cbo.ValueMember = dt.Columns[0].ToString();
         }
         private void CTphieumuon_Load(object sender, EventArgs e)
